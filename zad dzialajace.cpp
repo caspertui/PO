@@ -1,26 +1,3 @@
-/* 
-  Proszê dopisaæ kod, dodaæ nowe pliki, tak aby program siê wykonywa³, a wynik jego dzia³ania by³ taki sam, jak podany na koñcu tego pliku.
- Zadanie opiera siê na znanej ju¿ Wam treœci (mo¿na korzystaæ ze Ÿróde³ lab3), lecz tym razem mamy klasy, konstruktory, destruktory, klasy i funkcje zaprzyjaŸnione.
- Klasa MapPoint (pliki MapPoint.h, MapPoint.cpp) reprezentuje punkt na mapie sk³adaj¹cy siê z nazwy (mo¿e byæ typu string), d³ugoœci (longitude) i szerokoœci (latitude) geograficznej. S¹ to prywatne sk³adowe klasy.
- 
- Konstruktory i destruktory (dawne construct i clear) tworz¹ i usuwaj¹ punkt.
- Konstruktor posiada ró¿ne wersje.
-  Pierwsza przyjmuje wspó³rzêdne w postaci dodatniej (unsigned) oraz strony œwiata w postaci char ('E', 'W' dla d³ugoœci i 'N', 'S' dla szerokoœci).
-  Druga przyjmuje dodatnie i ujemne wartoœci wspórzêdnych i na ich podstawie wnioskujemy strony œwiata. Odpowiednio zgodnie z uk³adem wspó³rzêdnych dla d³ugoœci ujemnych mamy W, a dla szerokoœci ujemnych mamy S.
-  UWAGA! Oznaczeñ znakowych pó³kul nie przechowujemy, tak jak w zadaniu, które ju¿ robiliœmy. Po prostu w okreœlonych przypadkach w pierwszym konstruktorze zmieniamy znak.
-  Bezparametrowa ustawia punkt na (0,0) i nazwê na "Punkt".
- 
- Funkcja sk³adowa movePoint zmienia wspó³rzedne punktu, przesuwaj¹c go o wartoœci podane w argumentach funkcji. Proszê pamiêtaæ o ew. zmianach stron œwiata po przesuniêciu.
-Funkcja skladowa closestFrom pobiera 3 argumenty. Pierwszy argument jest punktem referencyjnym. Z dwóch kolejnych wybiera ten,który jest najbli¿ej punktu referencyjnego. Funkcja wykorzystuje angularDistance.
- 
-Funkcja zaprzyjaŸniona inTheMiddle powinna tworzyæ nowy punkt na mapie o zadanej nazwie i po³o¿eniu, które jest œredni¹ arytmetyczn¹ z po³o¿eñ podanych punktów czyli x = (x1 + x2)/2 itp. Proszê uwa¿aæ w przypadku ró¿nych pó³kul.
-Klasa MapDist (pliki MapDist.h, MapDist.cpp) reprezentuje odleg³oœæ pomiêdzy dwoma punktami. Odleg³oœæ wzd³u¿ po³udników lub równole¿ników nale¿y obliczyæ po prostu odejmuj¹c od siebie wspó³rzêdne punktów koñcowego i pocz¹tkowego (konstruktor dzia³a podobnie jak funkcja distance).
-Funkcja angularDistance oblicza pierwiastek z sumy kwadratów odleg³oœci wzglêdem po³udników i równole¿ników, czyli sqrt(delta_x*delta_x + delta_y*delta_y).
-Funkcja obliczaj¹ca pierwiastek nazywa siê: sqrt(double) i znajduje siê w bibliotece "cmath".
-Za brak prywatnych danych bêd¹ obni¿ane punkty. Mo¿na zaprzyjaŸniæ klasy.
-Proszê zadbaæ o dobre zarz¹dzanie pamiêci¹.
-Pliku main.cpp, nie wolno modyfikowaæ.
-*/
 
 #include <iostream>
 #include <cstring>
@@ -237,30 +214,7 @@ int main()
   mp.print();
 
   std::cout << "*** Czyszczenie ***\n";
-  // Tu wywo³uj¹ siê destruktory
+  // Tu wywoÂ³ujÂ¹ siÃª destruktory
   delete nyc;
   delete porto;
 }
-/** Wynik dzia³ania programu:
-./main
-Wspolrzedne dla Krakow: 19.9383E, 50.0614N
-Wspolrzedne dla Nowy Jork: 74.0059W, 40.7127N
-Wspolrzedne dla Sydney: 151.102E, 33.454S
-Wspolrzedne dla Porto: 41.1621E, 8.62195N
-*** Po przesunieciu ***
-Wspolrzedne dla Porto: 45.2855E, 17.365S
-*** Po przesunieciu ***
-Wspolrzedne dla Porto: 45.2855W, 17.365N
-Odleglosci miedzy NYC i Sydney: 
-Roznica dlugosci: 225.108
-Roznica szerokosci: 74.1667
-Odleglosc: 237.011
-Blizej Krakowa jest Nowy Jork
-Wspolrzedne dla Kenia: 38.5481E, 3.62935N
-*** Czyszczenie ***
-Usuwanie Nowy Jork
-Usuwanie Porto
-Usuwanie Kenia
-Usuwanie Sydney
-Usuwanie Krakow
-*/
